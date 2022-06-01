@@ -29,5 +29,5 @@ Disassembly of section .fini:
 The objdump program displays alot of instructions thats why we just grep the useful information inside the main() function.
 Each bytes is represented in hexadecimal notation(base-16 numbering system), This is a convenient notation because a byte contains 8 bits. Each of which can be either true or false.
 This means that a byte has 256 possible values so each byte can be described with 2 hexadecimal digits.
-The hexadecimal numbers on the far left are memory adresses. The machine language instructions are put on the memory(A collection of bytes of temporary storage space that are numbered with addresses.)
+The hexadecimal numbers on the far left are memory adresses. The machine language instructions are put on the memory(A collection of bytes of temporary storage space that are numbered with addresses).
 
