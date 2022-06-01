@@ -17,4 +17,20 @@ Older Intel x86 processors use a 32-bit addressing scheme, while newwer ones use
 How to use GDB to show the state of the processor registers before the program starts.
 gdb -q ./a.out
 ![image](https://i.ibb.co/jwrD1Mz/image.png)
+Explanation:
+A breakpoint is set on the main() function so execution will stop right
+before our code is executed. Then GDB runs the program, stops at the
+breakpoint, and is told to display all the processor registers and their
+current states.
+EAX(Accumulator), ECX(Counter), EDX(Data), EBX(Base) are general purpose registers. They are used for a variety of purposes, but they mainly
+act as temporary variables for the CPU when it is executing machine
+instructions.
+ESP(Stack Pointer), EBP(Base Pointer), ESI(Source Index), EDI(Destination Index)are also general-purpose indexes but they are sometimes known as pointers and indexes. 
+The first two registers are called pointers because they store 32-bit addressses,which essentially point to that location in memory. These registers
+are fairly important to program execution and memory management.
+EIP(Instruction Pointer) register points to the current instruction the processor is reading. This register is quite important and will be used a lot while debugging.
+EFLAGS register consists of several bit flags that are used for comparisons and memory segmentations.
+I will be using Intel syntax assembly language, our tools must be configured to use this syntax. To set gdb to use Intel Syntax we can put a simple command in the gdbinit file.
+Commands:
+echo "set disassembly intel" > ~/.gdbinit
 
