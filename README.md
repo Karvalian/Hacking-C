@@ -33,4 +33,22 @@ EFLAGS register consists of several bit flags that are used for comparisons and 
 I will be using Intel syntax assembly language, our tools must be configured to use this syntax. To set gdb to use Intel Syntax we can put a simple command in the gdbinit file.
 Commands:
 echo "set disassembly intel" > ~/.gdbinit
+Intel Assembly syntax
+operation <destination>, <source>
+The destination and source values are either a register, a memory address or a value.
+mov is used to move a value from the source to the destination, sub to subtract, inc to increment...
+For example:
+mov ebp,esp
+sub esp,0x8
+This code moves the value from esp to ebp and then subtracts 8 from esp
+(Storing the result in ESP).
+cmp(operation) is used to compare values, any operation beginning with j is used to jump to a different part of the code.
+For example:
+cmp DWORD PTR[ebp-4],0x9
+jle 8048393 <main+0x1f>
+jmp 80483a6<main+0x32>
+Here the code first compares a 4 byte value located at EBP minus 4 ith the number 9, then execution jumps to the instruction at 0x8048393. Otherwise, execution flows to the next instruction with an unconditional jump.
+If the value isn't less than or equal to 9, execution will jump to 0x80483a6
+
+
 
