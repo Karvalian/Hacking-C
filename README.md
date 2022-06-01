@@ -1,5 +1,5 @@
 # Hacking using C-Language
-To look at the machine code of a gcc compiled program, we can use objdump
+To look at the machine code of a gcc compiled program(Simple Program that prints Hello World! 10 times), we can use objdump
 Example command:
 objdump -D {filename} | grep -A20 main.:
 Example output:
@@ -13,4 +13,8 @@ The hexadecimal numbers on the far left are memory adresses. The machine languag
 You can think of memory as a row of bytes, each with its own memory address. Each byte of memory can be access by its address, Here the CPU accesses this part of memory to retrieve the machine language instructions for the compiled program.
 Older Intel x86 processors use a 32-bit addressing scheme, while newwer ones use a 64-bit one. 32-bit processors have 2^32 possible adresses(4,294,967,296), 64 bit ones have 2^64(1.84467441x10^19)addresses.
 64-bit processors can run in 32-bit compatibility mode which allows them to run 32-bit code quickly.
- 
+
+How to use GDB to show the state of the processor registers before the program starts.
+gdb -q ./a.out
+![image](https://i.ibb.co/jwrD1Mz/image.png)
+
