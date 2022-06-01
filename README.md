@@ -1,4 +1,5 @@
 # Hacking using C-Language
+# Accessing Machine code of a gcc compiled program
 To look at the machine code of a gcc compiled program(Simple Program that prints Hello World! 10 times), we can use objdump
 Example command:
 objdump -D {filename} | grep -A20 main.:
@@ -14,7 +15,7 @@ You can think of memory as a row of bytes, each with its own memory address. Eac
 Older Intel x86 processors use a 32-bit addressing scheme, while newwer ones use a 64-bit one. 32-bit processors have 2^32 possible adresses(4,294,967,296), 64 bit ones have 2^64(1.84467441x10^19)addresses.
 64-bit processors can run in 32-bit compatibility mode which allows them to run 32-bit code quickly.
 
-How to use GDB to show the state of the processor registers before the program starts.
+# How to use GDB to show the state of the processor registers before the program starts.
 gdb -q ./a.out
 ![image](https://i.ibb.co/jwrD1Mz/image.png)
 Explanation:
@@ -22,6 +23,7 @@ A breakpoint is set on the main() function so execution will stop right
 before our code is executed. Then GDB runs the program, stops at the
 breakpoint, and is told to display all the processor registers and their
 current states.
+# Registers
 EAX(Accumulator), ECX(Counter), EDX(Data), EBX(Base) are general purpose registers. They are used for a variety of purposes, but they mainly
 act as temporary variables for the CPU when it is executing machine
 instructions.
@@ -30,6 +32,7 @@ The first two registers are called pointers because they store 32-bit addressses
 are fairly important to program execution and memory management.
 EIP(Instruction Pointer) register points to the current instruction the processor is reading. This register is quite important and will be used a lot while debugging.
 EFLAGS register consists of several bit flags that are used for comparisons and memory segmentations.
+# Intel-ASM syntax
 I will be using Intel syntax assembly language, our tools must be configured to use this syntax. To set gdb to use Intel Syntax we can put a simple command in the gdbinit file.
 Commands:
 echo "set disassembly intel" > ~/.gdbinit
@@ -52,3 +55,6 @@ If the value isn't less than or equal to 9, execution will jump to 0x80483a6
 
 
 
+#Memory Segmentation
+A compiled program's memory =/5 (text, data, bss, heap, stack) Each segment has a certain purpose and it represents a special portion of the memory. ![\n]
+The Text Segment
