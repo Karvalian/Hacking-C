@@ -71,3 +71,10 @@ If the instruction is a jump or a call instruction($EIP is changed at step 3), T
 
 Write Permission is disabled in this segment, as it is only used to store code. This is so that people dont modify the actual program code <br />
 If anyone actually tries to write to this segment, the program will be killed. This memory segment has a fixed size since nothing changes in it. <br />
+
+The Data and bss Segment <br />
+Data segment stores initialized global and static variables. <br />
+bss segment stores the uninitialized counterparts. <br />
+These segments are writable but they also have a fixed size. <br />
+Global variables persists, Both global and static variables are able to persist because they are stored in their own memory segments. <br />
+
