@@ -57,4 +57,17 @@ If the value isn't less than or equal to 9, execution will jump to 0x80483a6 <br
 
 # Memory Segmentation
 A compiled program's memory =/5 (text, data, bss, heap, stack) Each segment has a certain purpose and it represents a special portion of the memory. <br />
-The Text Segment 
+The Text Segment (code Segment) <br />
+This part of the memory stores the machine language instructions of the program. <br />
+These instructions are executed in a non-linear way because of the high-level control structures and functions(which compile into branch,jump, and call instructions in assembly language). <br />
+When a program is executed the $EIP register (or $RIP for me) is set to the frist instruction in the text segment. <br />
+The processor then goes through an execution loop that does the followong : <br />
+1. Reads the instruction that $EIP is pointing to <br />
+2. Adds the byte length of the instruction to $EIP <br />
+3. Executes the instruction that was read in step 1 <br />
+4. Goes back to step 1 <br />
+
+If the instruction is a jump or a call instruction($EIP is changed at step 3), The processor will just go back to step 1. <br />
+
+Write Permission is disabled in this segment, as it is only used to store code. This is so that people dont modify the actual program code <br />
+If anyone actually tries to write to this segment, the program will be killed. This memory segment has a fixed size since nothing changes in it. <br />
