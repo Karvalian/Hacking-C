@@ -78,3 +78,28 @@ bss segment stores the uninitialized counterparts. <br />
 These segments are writable but they also have a fixed size. <br />
 Global variables persists, Both global and static variables are able to persist because they are stored in their own memory segments. <br />
 
+The heap segment <br />
+This segment can be directly controlled by a programmer. <br />
+Blocks of memory in this segment can be allocated and used for
+whatever the programmer might need.<br />
+The heap memory doesn't have fixed size. <br />
+allocator and deallocator algorithms are used to manage this memory <br />
+
+The stack segment <br />
+This segment also stores variables and context during function calls.<br />
+When a program calls a function,
+that function will have its own set of passed variables, and the function’s code
+will be at a different memory location in the text (or code) segment.<br />
+The stack is used to remember all of the passed variables, and all the local variables used by that function. <br />
+All of this information is collectively called a *stack frame*.
+A stack is an abstract data structure. IT has (FILO) ordering, which means that the first item that is put into a stack is the last item to come out of it. <br />
+When an item is placed into a stack, it's known as pushing, and when an item is removed from a stack, it's called popping. <br />
+The stack segment of a memory is a stack data structure and it containes *stack frames*. the $ESP register is used to keep track of the address at the end of the list. <br />
+Since this is a dynamic behaviour, It makes sense that the stack is also not of a fixed size. <br />
+The FILO nature of a stack might seem odd, but since the stack is used to store context, it's very useful. <br />
+When you call a function(), you are acctually pushing several things to the stack in a stack frame <br />
+The EBP register (the frame pointer or local base pointer) is used to reference the function variables in the current stack frame. <br />
+Each stack frame contains the parameters to the function, its local variables, and two pointers that are necessary to put things back the way they were: the saved frame pointer (SFP) and the return address. <br />
+The SFP is used to restore EBP to its previous value, and the return address is used to restore EIP to the next instructio nfound after the function call.<br />
+
+ 
