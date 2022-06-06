@@ -102,4 +102,10 @@ The EBP register (the frame pointer or local base pointer) is used to reference 
 Each stack frame contains the parameters to the function, its local variables, and two pointers that are necessary to put things back the way they were: the saved frame pointer (SFP) and the return address. <br />
 The SFP is used to restore EBP to its previous value, and the return address is used to restore EIP to the next instructio nfound after the function call.<br />
 
- 
+# Some useful FLAGS for opening files
+O_RDONLY :: Open file for read-only access. <br />
+O_WRLONLY :: Open file for write-only access. <br />
+O_RDW :: Open file for both read and write access.<br />
+O_APPEND :: Write data at the end of the file.<br />
+O_TRUNC :: If the file already exits, truncate the file to 0 length. <br />
+O_CREAT :: Create the file if it doesn't exist<br />
